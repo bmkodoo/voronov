@@ -8,13 +8,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-public class SegmentsView extends JPanel {
+public class VoronovView extends JPanel {
     public static final int WIDTH = 800;
     public static final int HEIGHT = 600;
     private List<Point2D> points;
     private List<Edge> edges;
 
-    public SegmentsView(List<Point2D> points, List<Edge> edges) {
+    public VoronovView(List<Point2D> points, List<Edge> edges) {
         this.points = points;
         this.edges = edges;
     }
@@ -27,11 +27,13 @@ public class SegmentsView extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        points.forEach((point) -> {
-            g.drawOval((int) point.getX() - 2, (int) point.getY() - 2, 4, 4);
-        });
+        g.setColor(Color.black);
+        g.fillRect(0, 0, WIDTH, HEIGHT);
 
         g.setColor(Color.red);
+        points.forEach((point) -> g.fillOval((int) point.getX() - 2, (int) point.getY() - 2, 4, 4));
+
+        g.setColor(Color.orange);
         edges.forEach(edge -> {
             Point2D a = edge.getP1();
             Point2D b = edge.getP2();

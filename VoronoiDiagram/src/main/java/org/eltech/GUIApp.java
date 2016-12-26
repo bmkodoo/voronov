@@ -16,15 +16,15 @@ public class GUIApp {
         ArrayList<Point2D> points = new ArrayList<>(SEGMENTS_COUNT);
         for (int i = 0; i < SEGMENTS_COUNT; i++) {
             points.add(i, new Point2D(
-                    rand.nextDouble() * (SegmentsView.WIDTH),
-                    rand.nextDouble() * (SegmentsView.HEIGHT)
+                    rand.nextDouble() * (VoronovView.WIDTH),
+                    rand.nextDouble() * (VoronovView.HEIGHT)
             ));
         }
 
         EventQueue.invokeLater(() -> {
             JFrame frame = new JFrame();
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.add(new SegmentsView(points, VoronoiDiagram.Companion.createDiagram(points)));
+            frame.add(new VoronovView(points, VoronoiDiagram.Companion.createDiagram(points)));
             frame.pack();
             frame.setVisible(true);
         });
